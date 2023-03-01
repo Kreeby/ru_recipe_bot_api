@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${RECIPE_BOT_DB_URL}
+    username: ${RECIPE_BOT_DB_USERNAME}
+    password: ${RECIPE_BOT_DB_PASSWORD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation:true
+        dialect: org.hibernate.dialect.PostgreSQL92Dialect
+        default_schema: recipe_bot
+  elasticsearch:
+    rest:
+      uris: http://elasticsearch:9200
+      connection-timeout: 10s
+      socket-timeout: 60s
+      max-in-memory-size: 50MB
+
+elasticsearch:
+  host: host.docker.internal
+  port: 9200
